@@ -7,6 +7,12 @@ http
     const q = url.parse(req.url, true);
     let filename = `.${q.pathname}`;
     if (filename === "./") {
+      filename = "./project/index.html";
+    } else if (
+      filename !== "./project/about.html" &&
+      filename !== "./project/contact-me.html" &&
+      filename !== "./project/index.html"
+    ) {
       filename = "./project/404.html";
     }
     fs.readFile(filename, "utf-8", (err, data) => {
